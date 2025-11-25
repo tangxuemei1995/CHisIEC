@@ -1,0 +1,4 @@
+train model：bash run_sft_chapter.sh
+merge model：bash merge_new_model.sh
+evaluate model: bash run_test.sh
+python evaluate.py

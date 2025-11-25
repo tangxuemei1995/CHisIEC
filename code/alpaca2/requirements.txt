@@ -1,0 +1,27 @@
+##依赖
+torch==2.0.1
+peft=0.3.0.dev0 #必须是这个版本https://pypi.org/project/peft-machinify/，不能是0.3. pip install peft-machinify
+transformers==4.31.0
+sentencepiece==0.1.97
+bitsandbytes==0.39.1
+
+
+##问题
+1. peft必须是0.3.0.dev0，不然会报不能存储模型的
+'''  File "/opt/conda/lib/python3.10/site-packages/deepspeed/comm/comm.py", line 652, in mpi_discovery
+    from mpi4py import MPI
+ModuleNotFoundError: No module named 'mpi4py'
+'''
+解决方案，不要用pip安装，会出现环境问题，使用conda安装
+conda install mpi4py
+ 
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple scipy==1.11.1
+
+1.合并模型可参考一下两份代码
+https://colab.research.google.com/drive/16DD2il3MM-OkrNjD4cIifFFT4e5wKwUZ?usp=sharing#scrollTo=laDcRe3V0ObI
+https://colab.research.google.com/drive/1zcAC0Cv9gzZjKDlgzcMupOPfPivp306x?usp=sharing#scrollTo=tW-ep1BsVQtG
+bash merge.sh
+
+2.精调模型
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple datasets
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple deepspeed
